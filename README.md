@@ -53,3 +53,7 @@ Neo4j, this happens
 `john` is a member of all groups, so has full access:
 
 ![Granted](images/granted.png)
+
+[docker]: https://www.docker.com/
+[compose]: https://docs.docker.com/compose/
+[openldap]: http://www.openldap.org/
