@@ -83,10 +83,34 @@ EOF
 ldapadd -x -D cn=admin,dc=example,dc=org -W -f /tmp/add_user.ldif
 
 cat <<EOF > /tmp/add_group.ldif
-dn: cn=mygroup,ou=groups,dc=example,dc=org
+dn: cn=readers,ou=groups,dc=example,dc=org
 objectClass: groupofnames
-cn: mygroup
-description: All users
+cn: readers
+description: Readers
+member: uid=john,ou=people,dc=example,dc=org
+
+dn: cn=publishers,ou=groups,dc=example,dc=org
+objectClass: groupofnames
+cn: publishers
+description: Publishers
+member: uid=john,ou=people,dc=example,dc=org
+
+dn: cn=architects,ou=groups,dc=example,dc=org
+objectClass: groupofnames
+cn: architects
+description: Architects
+member: uid=john,ou=people,dc=example,dc=org
+
+dn: cn=admins,ou=groups,dc=example,dc=org
+objectClass: groupofnames
+cn: admins
+description: Admins
+member: uid=john,ou=people,dc=example,dc=org
+
+dn: cn=allowed,ou=groups,dc=example,dc=org
+objectClass: groupofnames
+cn: allowed
+description: Allowed
 member: uid=john,ou=people,dc=example,dc=org
 EOF
 

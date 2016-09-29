@@ -6,6 +6,17 @@ services:
     networks:
       - basic-lan
 
+  ldapadmin:
+    image: osixia/phpldapadmin:0.6.11
+    networks:
+      - basic-lan
+    depends_on:
+      - ldapserver
+    ports:
+      - "6443:443"
+    environment:
+      - "PHPLDAPADMIN_LDAP_HOSTS=ldapserver"
+
   neo4j:
     depends_on:
       - ldapserver
