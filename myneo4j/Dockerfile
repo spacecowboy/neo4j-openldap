@@ -4,7 +4,7 @@ RUN apk add --no-cache --quiet \
     bash \
     curl
 
-COPY neo4j-community-3.1.0-M10-unix.tar.gz /tmp/neo4j.tar.gz
+COPY neo4j-enterprise-3.1.0-M10-unix.tar.gz /tmp/neo4j.tar.gz
 
 RUN tar --extract --file /tmp/neo4j.tar.gz --directory /var/lib  \
     && mv /var/lib/neo4j-* /var/lib/neo4j

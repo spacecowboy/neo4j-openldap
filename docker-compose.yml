@@ -1,14 +1,14 @@
 version: '2'
 services:
 
-  openldap:
+  ldapserver:
     image: osixia/openldap:1.1.6
     networks:
       - basic-lan
 
   neo4j:
     depends_on:
-      - openldap
+      - ldapserver
     #image: neo4j/neo4j-experimental:3.1.0-M09-enterprise
     build: ./myneo4j
     ports:
