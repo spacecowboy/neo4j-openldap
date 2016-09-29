@@ -1,0 +1,36 @@
+version: '2'
+services:
+
+  openldap:
+    image: osixia/openldap:1.1.6
+    networks:
+      - basic-lan
+
+  neo4j:
+    depends_on:
+      - openldap
+    #image: neo4j/neo4j-experimental:3.1.0-M09-enterprise
+    build: ./myneo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    networks:
+      - basic-lan
+    volumes:
+      - ./conf:/conf
+      - ./logs:/logs
+#    environment:
+#       - NEO4J_AUTH=none
+      #- NEO4J_SERVER_ID=1
+      #- NEO4J_HA_ADDRESS=member1
+      #- NEO4J_PUBLIC_HOST=member1
+      #- NEO4J_DATABASE_MODE=HA
+      #- NEO4J_INITIAL_HOSTS=member1:5001,member2:5001,member3:5001
+
+
+networks:
+  basic-lan:
+#    ipam:
+#      config:
+#        - subnet: 192.168.36.0/24
+#          ip-range: 192.168.36.0/24
